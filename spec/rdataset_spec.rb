@@ -1,6 +1,6 @@
-RSpec.describe Rdatasets do
+RSpec.describe Rdataset do
   it "has a version number" do
-    expect(Rdatasets::VERSION).not_to be nil
+    expect(Rdataset::VERSION).not_to be nil
   end
 
   it "does something useful" do
