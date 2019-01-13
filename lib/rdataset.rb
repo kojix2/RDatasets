@@ -1,10 +1,10 @@
-require "rdataset/version"
-require "daru"
+require 'rdataset/version'
+require 'daru'
 
 module RDataset
   def self.load(package_name, dataset_name)
-    rdata_directory = File.expand_path('../../data', __FILE__)
-    dataset_name << ".csv"
+    rdata_directory = File.expand_path('../data', __dir__)
+    dataset_name << '.csv'
     filepath = File.join(rdata_directory, package_name, dataset_name)
     df = Daru::DataFrame.from_csv(filepath)
   end
