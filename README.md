@@ -21,5 +21,10 @@ df = Daru::DataFrame.from_rdataset("datasets","iris")
 df = RDataset.load("datasets", "iris")
 ```
 
-## Development & Contributing
+## Development
+What I do NOT do
+* Add data other than the CSV file. 
+* Add custom useful methods for each data set.
+
+## Contributing
 Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/rdataset.
