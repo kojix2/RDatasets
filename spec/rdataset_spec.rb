@@ -1,9 +1,9 @@
-RSpec.describe Rdataset do
+RSpec.describe RDataset do
   it "has a version number" do
-    expect(Rdataset::VERSION).not_to be nil
+    expect(RDataset::VERSION).not_to be nil
   end
 
-  it "does something useful" do
-    expect(false).to eq(true)
+  it "can load the iris dataset" do
+    expect(RDataset.load("datasets","iris").class).to eq Daru::DataFrame
   end
 end
