@@ -7,14 +7,18 @@ RDatasets for Ruby.
 ## Installation
 
 ```bash
-gem install rdataset
+git clone https://github.com/kojix2/rdataset
+cd rdataset
+bundle install
+bundle exec rake install
 ```
 
 ## Usage
 
 ```ruby
 require 'rdataset'
-df = Daru::RDataset.new("datasets","iris")
+df = Daru::DataFrame.from_rdataset("datasets","iris")
+df = RDataset.load("datasets", "iris")
 ```
 
 ## Development & Contributing
