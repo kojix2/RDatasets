@@ -27,4 +27,4 @@ What I do NOT do
 * Add custom useful methods for each data set.
 
 ## Contributing
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/rdataset.
+Bug reports and pull requests are welcome on GitHub at https://github.com/kojix2/rdataset.
