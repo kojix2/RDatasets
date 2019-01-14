@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rdataset (0.1.0)
+    rdataset (0.1.1)
       daru
 
 GEM
