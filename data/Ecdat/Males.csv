@@ -1,4 +1,4 @@
-"","nr","year","school","exper","union","ethn","married","health","wage","industry","occupation","residence"
+"","nr","year","school","exper","union","ethn","maried","health","wage","industry","occupation","residence"
 "1",13,1980,14,1,"no","other","no","no",1.1975402046,"Business_and_Repair_Service","Service_Workers","north_east"
 "2",13,1981,14,2,"yes","other","no","no",1.8530599951,"Personal_Service","Service_Workers","north_east"
 "3",13,1982,14,3,"no","other","no","no",1.3444616775,"Business_and_Repair_Service","Service_Workers","north_east"

@@ -32,6 +32,6 @@ What I do NOT do
 Bug reports and pull requests are welcome on GitHub at https://github.com/kojix2/rdataset.
 
 ## License
-Follow the document below.
+See the documents below.
 * https://github.com/vincentarelbundock/Rdatasets#license
 * https://github.com/johnmyleswhite/RDatasets.jl#licensing-and-intellectual-property
