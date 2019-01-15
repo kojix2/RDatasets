@@ -1,4 +1,6 @@
 # RDataset
+[![Gem Version](https://badge.fury.io/rb/rdataset.svg)](https://badge.fury.io/rb/rdataset)
+[![Build Status](https://travis-ci.org/kojix2/rdataset.svg?branch=master)](https://travis-ci.org/kojix2/rdataset)
 
 RDatasets for Ruby.
 * [RDatasets](https://github.com/vincentarelbundock/Rdatasets)
