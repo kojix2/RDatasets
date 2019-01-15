@@ -1,7 +1,11 @@
----
 sudo: false
 language: ruby
 cache: bundler
 rvm:
-  - 2.6.0
+  - 2.5
+  - 2.6
+  - jruby
 before_install: gem install bundler -v 2.0.1
+branches:
+  only:
+    - master
