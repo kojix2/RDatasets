@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rdataset (0.2.0)
+    rdatasets (0.2.0)
       daru
 
 GEM
@@ -35,7 +35,7 @@ PLATFORMS
 DEPENDENCIES
   bundler (~> 2.0)
   rake (~> 10.0)
-  rdataset!
+  rdatasets!
   rspec (~> 3.0)
 
 BUNDLED WITH

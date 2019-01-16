@@ -1,10 +1,10 @@
-RSpec.describe RDataset do
+RSpec.describe RDatasets do
   it 'has a version number' do
-    expect(RDataset::VERSION).not_to be nil
+    expect(RDatasets::VERSION).not_to be nil
   end
 
   it 'can load the iris dataset' do
-    expect(RDataset.load('datasets', 'iris').class).to eq Daru::DataFrame
+    expect(RDatasets.load('datasets', 'iris').class).to eq Daru::DataFrame
   end
 
   rdata_directory = File.expand_path('../data', __dir__)
@@ -18,7 +18,7 @@ RSpec.describe RDataset do
       next if dataset == 'sna.ex'
 
       it "can load the #{package}/#{dataset} dataset" do
-        expect(RDataset.load(package, dataset).class).to eq Daru::DataFrame
+        expect(RDatasets.load(package, dataset).class).to eq Daru::DataFrame
       end
     end
   end

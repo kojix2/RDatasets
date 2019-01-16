@@ -1,5 +1,5 @@
 require 'bundler/setup'
-require 'rdataset'
+require 'rdatasets'
 require 'daru'
 
 RSpec.configure do |config|

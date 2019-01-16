@@ -1,7 +1,7 @@
-require 'rdataset/version'
+require 'rdatasets/version'
 require 'daru'
 
-module RDataset
+module RDatasets
   module_function
 
   def load(package_name, dataset_name)
@@ -18,8 +18,8 @@ end
 
 module Daru
   class DataFrame
-    def self.from_rdataset(package_name, dataset_name)
-      RDataset.load(package_name, dataset_name)
+    def self.from_rdatasets(package_name, dataset_name)
+      RDatasets.load(package_name, dataset_name)
     end
   end
 end

@@ -1,6 +1,6 @@
-# RDataset
-[![Gem Version](https://badge.fury.io/rb/rdataset.svg)](https://badge.fury.io/rb/rdataset)
-[![Build Status](https://travis-ci.org/kojix2/rdataset.svg?branch=master)](https://travis-ci.org/kojix2/rdataset)
+# RDatasets
+[![Gem Version](https://badge.fury.io/rb/rdatasets.svg)](https://badge.fury.io/rb/rdatasets)
+[![Build Status](https://travis-ci.org/kojix2/rdatasets.svg?branch=master)](https://travis-ci.org/kojix2/rdatasets)
 
 RDatasets for Ruby.
 * [RDatasets](https://github.com/vincentarelbundock/Rdatasets)
@@ -9,8 +9,8 @@ RDatasets for Ruby.
 ## Installation
 
 ```bash
-git clone https://github.com/kojix2/rdataset
-cd rdataset
+git clone https://github.com/kojix2/rdatasets
+cd rdatasets
 bundle install
 bundle exec rake install
 ```
@@ -18,9 +18,9 @@ bundle exec rake install
 ## Usage
 
 ```ruby
-require 'rdataset'
-df = Daru::DataFrame.from_rdataset("datasets","iris")
-df = RDataset.load("datasets", "iris")
+require 'rdatasets'
+df = Daru::DataFrame.from_rdatasets("datasetss","iris")
+df = RDatasets.load("datasets", "iris")
 ```
 
 ## Development
@@ -29,7 +29,7 @@ What I do NOT do
 * Add custom useful methods for each data set.
 
 ## Contributing
-Bug reports and pull requests are welcome on GitHub at https://github.com/kojix2/rdataset.
+Bug reports and pull requests are welcome on GitHub at https://github.com/kojix2/rdatasets.
 
 ## License
 See the documents below.

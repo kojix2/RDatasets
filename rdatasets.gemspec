@@ -1,16 +1,16 @@
 lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'rdataset/version'
+require 'rdatasets/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'rdataset'
-  spec.version       = RDataset::VERSION
+  spec.name          = 'rdatasets'
+  spec.version       = RDatasets::VERSION
   spec.authors       = ['kojix2']
   spec.email         = ['2xijok@gmail.com']
 
   spec.summary       = 'Ruby package for loading classical data sets vailable in R'
   spec.description   = 'Ruby package for loading classical data sets vailable in R'
-  spec.homepage      = 'https://github.com/kojix2/rdataset'
+  spec.homepage      = 'https://github.com/kojix2/rdatasets'
 
   spec.metadata['homepage_uri'] = spec.homepage
   spec.metadata['source_code_uri'] = spec.homepage
