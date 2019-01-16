@@ -3,10 +3,16 @@
 [![Build Status](https://travis-ci.org/kojix2/rdatasets.svg?branch=master)](https://travis-ci.org/kojix2/rdatasets)
 
 RDatasets for Ruby.
-* [RDatasets](https://github.com/vincentarelbundock/Rdatasets)
-* [RDatasets.jl](https://github.com/johnmyleswhite/RDatasets.jl)
+This ruby gem allows you to access over 1200 datasets included in R from Ruby. 
+
+- All the datasets were ported from [RDatasets](https://github.com/vincentarelbundock/Rdatasets) created by Vincent.
+- This Ruby gem was inspired by [RDatasets.jl](https://github.com/johnmyleswhite/RDatasets.jl) created by John Myles White.
 
 ## Installation
+
+```bash
+gem install rdatasets
+```
 
 ```bash
 git clone https://github.com/kojix2/rdatasets
@@ -21,17 +27,18 @@ bundle exec rake install
 require 'rdatasets'
 df = Daru::DataFrame.from_rdatasets("datasetss","iris")
 df = RDatasets.load("datasets", "iris")
+# returns Daru::DataFrame
 ```
 
 ## Development
 What I do NOT do
-* Add data other than the CSV file. 
-* Add custom useful methods for each data set.
+- Add data other than the CSV file. 
+- Add custom useful methods for each data set.
 
 ## Contributing
 Bug reports and pull requests are welcome on GitHub at https://github.com/kojix2/rdatasets.
 
 ## License
-See the documents below.
-* https://github.com/vincentarelbundock/Rdatasets#license
-* https://github.com/johnmyleswhite/RDatasets.jl#licensing-and-intellectual-property
+GPL-3. See the documents below.
+- https://github.com/vincentarelbundock/Rdatasets#license
+- https://github.com/johnmyleswhite/RDatasets.jl#licensing-and-intellectual-property
