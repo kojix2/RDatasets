@@ -11,6 +11,10 @@ RSpec.describe RDatasets do
     expect(RDatasets.load(:datasets, :iris).class).to eq Daru::DataFrame
   end
 
+  it 'show a list of packages' do
+    expect(RDatasets.packages.class).to eq Daru::DataFrame
+  end
+
   rdata_directory = File.expand_path('../data', __dir__)
   Dir.glob(File.join(rdata_directory, '/*')).each do |dirpath|
     package = File.basename(dirpath)
