@@ -25,7 +25,7 @@ module RDatasets
 
     # "car" package directory is a symbolic link.
     # Do not use Symbolic links because they can cause error on Windows.
-    package_name = "carData" if package_name == "car"
+    package_name = 'carData' if package_name == 'car'
     dataset_name << '.csv'
     File.join(rdata_directory, package_name, dataset_name)
   end

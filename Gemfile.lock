@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rdatasets (0.3.1)
+    rdatasets (0.3.2)
       daru
 
 GEM
@@ -31,6 +31,7 @@ GEM
 
 PLATFORMS
   ruby
+  x64-mingw32
 
 DEPENDENCIES
   bundler (~> 2.0)
