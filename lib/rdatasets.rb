@@ -22,6 +22,10 @@ module RDatasets
     rdata_directory = File.expand_path('../data', __dir__)
     package_name = package_name.to_s if package_name.is_a? Symbol
     dataset_name = dataset_name.to_s if dataset_name.is_a? Symbol
+
+    # "car" package directory is a symbolic link.
+    # Do not use Symbolic links because they can cause error on Windows.
+    package_name = "carData" if package_name == "car"
     dataset_name << '.csv'
     File.join(rdata_directory, package_name, dataset_name)
   end
