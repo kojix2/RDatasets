@@ -3,8 +3,12 @@ RSpec.describe RDatasets do
     expect(RDatasets::VERSION).not_to be nil
   end
 
-  it 'can load the iris dataset' do
+  it 'can load the iris dataset with String' do
     expect(RDatasets.load('datasets', 'iris').class).to eq Daru::DataFrame
+  end
+
+  it 'can load the iris dataset with Symbol' do
+    expect(RDatasets.load(:datasets, :iris).class).to eq Daru::DataFrame
   end
 
   rdata_directory = File.expand_path('../data', __dir__)

@@ -1,6 +1,11 @@
 RSpec.describe Daru::DataFrame do
-  it 'can create dataframe from rdataset' do
+
+  it 'can create dataframe from rdataset with String' do
     expect(Daru::DataFrame.from_rdatasets('datasets', 'iris').class).to eq Daru::DataFrame
+  end
+
+  it 'can create dataframe from rdataset with Symbol' do
+    expect(Daru::DataFrame.from_rdatasets(:datasets, :iris).class).to eq Daru::DataFrame
   end
 
   rdata_directory = File.expand_path('../data', __dir__)
