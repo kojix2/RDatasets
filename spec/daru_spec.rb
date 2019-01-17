@@ -1,5 +1,4 @@
 RSpec.describe Daru::DataFrame do
-
   it 'can create dataframe from rdataset with String' do
     expect(Daru::DataFrame.from_rdatasets('datasets', 'iris').class).to eq Daru::DataFrame
   end

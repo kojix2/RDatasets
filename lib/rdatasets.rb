@@ -20,8 +20,8 @@ module RDatasets
   # @return [String]
   def filepath(package_name, dataset_name)
     rdata_directory = File.expand_path('../data', __dir__)
-    package_name = package_name.to_s if package_name.kind_of? Symbol
-    dataset_name = dataset_name.to_s if dataset_name.kind_of? Symbol
+    package_name = package_name.to_s if package_name.is_a? Symbol
+    dataset_name = dataset_name.to_s if dataset_name.is_a? Symbol
     dataset_name << '.csv'
     File.join(rdata_directory, package_name, dataset_name)
   end
