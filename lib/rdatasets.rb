@@ -30,7 +30,7 @@ module RDatasets
     File.join(rdata_directory, package_name, dataset_name)
   end
 
-  def packages
+  def datasets
     file_path = File.expand_path('../data/datasets.csv', __dir__)
     Daru::DataFrame.from_csv(file_path)
   end
