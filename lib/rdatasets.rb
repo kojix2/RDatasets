@@ -9,9 +9,18 @@ module RDatasets
   # @param package_name [String, Symbol] :R package name
   # @param dataset_name [String, Symbol] :R dataset name
   # @return [Daru::DataFrame]
-  def load(package_name, dataset_name)
-    file_path = filepath(package_name, dataset_name)
-    Daru::DataFrame.from_csv(file_path)
+  def load(package_name, dataset_name = nil)
+    if dataset_name
+      file_path = filepath(package_name, dataset_name)
+      df = Daru::DataFrame.from_csv(file_path)
+      if df[0].to_a == [*1..df.size]
+        df.index = df[""]
+        df.delete_vector df[0].name
+      end
+      df
+    else
+      packages(package_name)
+    end
   end
 
   # Get the file path of a certain dataset.
@@ -33,6 +42,15 @@ module RDatasets
   def datasets
     file_path = File.expand_path('../data/datasets.csv', __dir__)
     Daru::DataFrame.from_csv(file_path)
+  end
+
+  def packages(dataset_name = nil)
+    if dataset_name
+      df = datasets
+      df.where(df['Package'].eq dataset_name.to_s)
+    else
+      datasets['Package'].to_a.uniq.map(&:to_sym)
+    end
   end
 end
 
