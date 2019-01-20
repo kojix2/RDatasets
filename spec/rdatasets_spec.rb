@@ -12,7 +12,7 @@ RSpec.describe RDatasets do
   end
 
   it 'show a list of packages' do
-    expect(RDatasets.packages.class).to eq Daru::DataFrame
+    expect(RDatasets.datasets.class).to eq Daru::DataFrame
   end
 
   rdata_directory = File.expand_path('../data', __dir__)
