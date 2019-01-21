@@ -16,10 +16,10 @@ RSpec.describe RDatasets do
   end
 
   rdata_directory = File.expand_path('../data', __dir__)
-  Dir.glob(File.join(rdata_directory, '/*')).each do |dirpath|
+  Dir.glob(File.join(rdata_directory, '/*')).sort.each do |dirpath|
     package = File.basename(dirpath)
 
-    Dir.glob(File.join(dirpath, '/*')).each do |filepath|
+    Dir.glob(File.join(dirpath, '/*')).sort.each do |filepath|
       dataset = File.basename(filepath, '.csv')
 
       next if dataset == 'friendship'

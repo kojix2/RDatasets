@@ -13,7 +13,7 @@ module RDatasets
     if dataset_name
       file_path = filepath(package_name, dataset_name)
       df = Daru::DataFrame.from_csv(file_path)
-      df.set_index(df[0].name) if original_index_is_sequential? df
+      df.set_index(df[0].name) if original_index_is_uniq? df
       df
     else
       packages(package_name)
@@ -44,16 +44,18 @@ module RDatasets
   def packages(dataset_name = nil)
     if dataset_name
       df = datasets
-      df.where(df['Package'].eq dataset_name.to_s)
+      ds = df.where(df['Package'].eq dataset_name.to_s)
+      ds["Item"].to_a.map(&:to_sym)
     else
       datasets['Package'].to_a.uniq.map(&:to_sym)
     end
   end
 
-  def original_index_is_sequential?(df)
-    df[0].to_a == [*1..df.size]
+  # NOTE: original_index_is_sequential?
+  def original_index_is_uniq?(df)
+    df[0].to_a.uniq.size == df.size
   end
-  private_class_method :original_index_is_sequential?
+  private_class_method :original_index_is_uniq?
 end
 
 module Daru
