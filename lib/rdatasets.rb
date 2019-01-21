@@ -13,10 +13,7 @@ module RDatasets
     if dataset_name
       file_path = filepath(package_name, dataset_name)
       df = Daru::DataFrame.from_csv(file_path)
-      if df[0].to_a == [*1..df.size]
-        df.index = df[""]
-        df.delete_vector df[0].name
-      end
+      df.set_index(df[0].name) if original_index_is_sequential? df
       df
     else
       packages(package_name)
@@ -52,6 +49,11 @@ module RDatasets
       datasets['Package'].to_a.uniq.map(&:to_sym)
     end
   end
+
+  def original_index_is_sequential?(df)
+    df[0].to_a == [*1..df.size]
+  end
+  private_class_method :original_index_is_sequential?
 end
 
 module Daru
