@@ -7,6 +7,11 @@ RSpec.describe RDatasets do
     expect(RDatasets.datasets.class).to eq Daru::DataFrame
   end
 
+  it 'can set index' do
+    df = RDatasets.load :datasets, :iris
+    df[0].to_a != Array.new(df.size) { |i| i + 1 }
+  end
+
   rdata_directory = File.expand_path('../data', __dir__)
   Dir.glob(File.join(rdata_directory, '/*')).sort.each do |dirpath|
     package = File.basename(dirpath)
