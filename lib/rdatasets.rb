@@ -32,25 +32,36 @@ module RDatasets
     # "car" package directory is a symbolic link.
     # Do not use Symbolic links because they can cause error on Windows.
     package_name = 'carData' if package_name == 'car'
-    dataset_name << '.csv'
+    dataset_name +=  '.csv'
     File.join(rdata_directory, package_name, dataset_name)
   end
 
+  # Display information of all data sets.
+  # @return [Daru::DataFrame]
   def datasets
     file_path = File.expand_path('../data/datasets.csv', __dir__)
     Daru::DataFrame.from_csv(file_path)
   end
 
-  def packages(dataset_name = nil)
-    if dataset_name
+  #
+  # @overload packages
+  #   Show a list of all packages.
+  #   @return [Array<Symbol>]
+  # @overload packages(package_name)
+  #   Show a list of datasets included in the package.
+  #   @param [String, Symbol] :R package name
+  #   @return [Array<Symbol>]
+  def packages(package_name = nil)
+    if package_name
       df = datasets
-      ds = df.where(df['Package'].eq dataset_name.to_s)
-      ds["Item"].to_a.map(&:to_sym)
+      ds = df.where(df['Package'].eq package_name.to_s)
+      ds['Item'].to_a.map(&:to_sym)
     else
       datasets['Package'].to_a.uniq.map(&:to_sym)
     end
   end
 
+  # Check if the index of original r dataset is sequential.
   def original_index_is_sequential?(df)
     df[0].to_a == [1..df.size]
   end
