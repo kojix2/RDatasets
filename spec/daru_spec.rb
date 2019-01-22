@@ -1,5 +1,4 @@
 RSpec.describe Daru::DataFrame do
-
   rdata_directory = File.expand_path('../data', __dir__)
   Dir.glob(File.join(rdata_directory, '/*')).sort.each do |dirpath|
     package = File.basename(dirpath)

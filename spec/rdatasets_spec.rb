@@ -20,7 +20,7 @@ RSpec.describe RDatasets do
       it "can load the #{package}/#{dataset} dataset with String" do
         expect(RDatasets.load(package, dataset).class).to eq Daru::DataFrame
       end
-      
+
       it "can load the #{package}/#{dataset} dataset with Symbol" do
         expect(RDatasets.load(package.to_sym, dataset.to_sym).class).to eq Daru::DataFrame
       end
