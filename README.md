@@ -27,7 +27,7 @@ bundle exec rake install
 
 ```ruby
 require 'rdatasets'
-df = Daru::DataFrame.from_rdatasets("datasetss","iris")
+df = Daru::DataFrame.from_rdatasets("datasets","iris")
 df = RDatasets.load("datasets", "iris")
 # returns Daru::DataFrame
 ```
