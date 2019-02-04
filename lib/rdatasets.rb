@@ -66,8 +66,8 @@ module RDatasets
   end
 
   # Check if the index of original r dataset is sequential.
-  def original_index_is_sequential?(df)
-    df[0].to_a == [*1..df.size]
+  def original_index_is_sequential?(dataframe)
+    dataframe[0].to_a == [*1..dataframe.size]
   end
   private_class_method :original_index_is_sequential?
 end
