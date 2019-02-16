@@ -9,7 +9,17 @@ RSpec.describe RDatasets do
 
   it 'can set index' do
     df = RDatasets.load :datasets, :iris
-    df[0].to_a != Array.new(df.size) { |i| i + 1 }
+    expect(df[0].to_a).not_to eq Array.new(df.size) { |i| i + 1 }
+  end
+
+  it 'can search "diamond"' do
+    df = RDatasets.search 'diamond'
+    expect(df.size).to eq 4
+  end
+
+  it 'can search /ing$/' do
+    df = RDatasets.search /ing$/
+    expect(df.size).to eq 33
   end
 
   rdata_directory = File.expand_path('../data', __dir__)

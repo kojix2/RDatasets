@@ -65,6 +65,18 @@ module RDatasets
     end
   end
 
+  # Search available datasets. (items and titles) 
+  # If the argument is a string, ignore case.
+  # @param pattern [String, Regexp] :The pattern to search for
+  # @return [Daru::DataFrame]
+  def search(pattern)
+    pattern = /#{pattern}/i if pattern.is_a? String
+    p pattern
+    datasets.filter(:row) do |row|
+      row['Item'] =~ pattern || row['Title'] =~ pattern
+    end
+  end
+
   # Check if the index of original r dataset is sequential.
   def original_index_is_sequential?(dataframe)
     dataframe[0].to_a == [*1..dataframe.size]
