@@ -36,10 +36,10 @@ module RDatasets
     if dataset_name
       file_path = filepath(package_name, dataset_name)
       dataframe = Daru::DataFrame.from_csv(file_path)
-      if original_index_is_sequential? df
+      if original_index_is_sequential? dataframe
         # `dataframe.set_index` is slow
-        dataframe.index = df[0]
-        dataframe.delete_vector df[0].name
+        dataframe.index = dataframe.at 0
+        dataframe.delete_vector dataframe.at(0).name
       end
       dataframe
     else
@@ -98,7 +98,7 @@ module RDatasets
 
   # Check if the index of original r dataset is sequential.
   def original_index_is_sequential?(dataframe)
-    dataframe[0].to_a == [*1..dataframe.size]
+    dataframe.at(0).to_a == [*1..dataframe.size]
   end
   private_class_method :original_index_is_sequential?
 end

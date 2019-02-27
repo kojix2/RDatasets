@@ -4,7 +4,7 @@ RSpec.describe RDatasets do
   end
 
   it 'show a list of packages' do
-    expect(RDatasets.datasets.class).to eq Daru::DataFrame
+    expect(RDatasets.df.class).to eq Daru::DataFrame
   end
 
   it 'can set index' do
