@@ -35,15 +35,15 @@ module RDatasets
   def load(package_name, dataset_name = nil)
     if dataset_name
       file_path = filepath(package_name, dataset_name)
-      df = Daru::DataFrame.from_csv(file_path)
+      dataframe = Daru::DataFrame.from_csv(file_path)
       if original_index_is_sequential? df
-        # `df.set_index` is slow
-        df.index = df[0]
-        df.delete_vector df[0].name
+        # `dataframe.set_index` is slow
+        dataframe.index = df[0]
+        dataframe.delete_vector df[0].name
       end
-      df
+      dataframe
     else
-      packages(package_name)
+      package(package_name)
     end
   end
 
