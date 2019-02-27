@@ -3,6 +3,30 @@ require 'daru'
 
 # Module for RDatasets
 module RDatasets
+  class Package
+    def initialize(package_name)
+      @package_name = package_name
+    end
+
+    def inspect
+      RDatasets.packages @package_name
+    end
+
+    private
+
+    def method_missing(name)
+      RDatasets.load @package_name, name
+    end
+  end
+
+  private
+
+  def self.method_missing(package_name)
+    return Package.new(package_name) if RDatasets.packages.include? package_name
+
+    super
+  end
+
   module_function
 
   # Load a certain dataset and returns a dataframe.
@@ -65,7 +89,7 @@ module RDatasets
     end
   end
 
-  # Search available datasets. (items and titles) 
+  # Search available datasets. (items and titles)
   # If the argument is a string, ignore case.
   # @param pattern [String, Regexp] :The pattern to search for
   # @return [Daru::DataFrame]
