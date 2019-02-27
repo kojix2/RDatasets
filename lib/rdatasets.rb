@@ -6,16 +6,15 @@ module RDatasets
   class Package
     def initialize(package_name)
       @package_name = package_name
-    end
-
-    def inspect
-      RDatasets.packages @package_name
+      @datasets = RDatasets.package package_name
     end
 
     private
 
     def method_missing(name)
-      RDatasets.load @package_name, name
+      return RDatasets.load @package_name, name if @datasets.include? name
+
+      super
     end
   end
 
@@ -66,7 +65,7 @@ module RDatasets
 
   # Display information of all data sets.
   # @return [Daru::DataFrame]
-  def datasets
+  def df
     file_path = File.expand_path('../data/datasets.csv', __dir__)
     Daru::DataFrame.from_csv(file_path)
   end
@@ -74,14 +73,13 @@ module RDatasets
   # Show a list of all packages.
   # @return [Array<Symbol>]
   def packages
-    datasets['Package'].to_a.uniq.map(&:to_sym)
+    df['Package'].to_a.uniq.map(&:to_sym)
   end
 
   # Show a list of datasets included in the package.
   # @param [String, Symbol] :R package name
   # @return [Array<Symbol>]
   def package(package_name)
-    df = datasets
     ds = df.where(df['Package'].eq package_name.to_s)
     ds['Item'].to_a.map(&:to_sym)
   end
@@ -93,7 +91,7 @@ module RDatasets
   def search(pattern)
     pattern = /#{pattern}/i if pattern.is_a? String
     p pattern
-    datasets.filter(:row) do |row|
+    df.filter(:row) do |row|
       row['Item'] =~ pattern || row['Title'] =~ pattern
     end
   end
