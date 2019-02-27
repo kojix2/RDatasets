@@ -71,22 +71,19 @@ module RDatasets
     Daru::DataFrame.from_csv(file_path)
   end
 
-  #
-  # @overload packages
-  #   Show a list of all packages.
-  #   @return [Array<Symbol>]
-  # @overload packages(package_name)
-  #   Show a list of datasets included in the package.
-  #   @param [String, Symbol] :R package name
-  #   @return [Array<Symbol>]
-  def packages(package_name = nil)
-    if package_name
-      df = datasets
-      ds = df.where(df['Package'].eq package_name.to_s)
-      ds['Item'].to_a.map(&:to_sym)
-    else
-      datasets['Package'].to_a.uniq.map(&:to_sym)
-    end
+  # Show a list of all packages.
+  # @return [Array<Symbol>]
+  def packages
+    datasets['Package'].to_a.uniq.map(&:to_sym)
+  end
+
+  # Show a list of datasets included in the package.
+  # @param [String, Symbol] :R package name
+  # @return [Array<Symbol>]
+  def package(package_name)
+    df = datasets
+    ds = df.where(df['Package'].eq package_name.to_s)
+    ds['Item'].to_a.map(&:to_sym)
   end
 
   # Search available datasets. (items and titles)
