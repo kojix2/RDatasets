@@ -18,6 +18,8 @@ module RDatasets
     end
   end
 
+  private_constant :Package
+
   private
 
   def self.method_missing(package_name)
@@ -90,7 +92,6 @@ module RDatasets
   # @return [Daru::DataFrame]
   def search(pattern)
     pattern = /#{pattern}/i if pattern.is_a? String
-    p pattern
     df.filter(:row) do |row|
       row['Item'] =~ pattern || row['Title'] =~ pattern
     end
