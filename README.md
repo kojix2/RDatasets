@@ -16,20 +16,22 @@ under development
 gem install rdatasets
 ```
 
-```bash
-git clone https://github.com/kojix2/rdatasets
-cd rdatasets
-bundle install
-bundle exec rake install
-```
-
 ## Usage
 
 ```ruby
 require 'rdatasets'
 df = Daru::DataFrame.from_rdatasets("datasets","iris")
-df = RDatasets.load("datasets", "iris")
+df = RDatasets.load "datasets", "iris"
+df = RDatasets.load :datasets, :iris
+df = RDatasets.datasets.iris
 # returns Daru::DataFrame
+
+# available datasets
+df = RDatasets.df
+
+# search
+RDatasets.search "diamonds"
+RDatasets.search /diamonds/
 ```
 
 ## Development
