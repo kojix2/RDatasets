@@ -22,6 +22,12 @@ RSpec.describe RDatasets do
     expect(df.size).to eq 33
   end
 
+  it 'can load datasets vi method chain' do
+    df1 = RDatasets.load :datasets, :iris
+    df2 = RDatasets.datasets.iris
+    expect(df1 == df2).to eq true
+  end
+
   rdata_directory = File.expand_path('../data', __dir__)
   Dir.glob(File.join(rdata_directory, '/*')).sort.each do |dirpath|
     package = File.basename(dirpath)
