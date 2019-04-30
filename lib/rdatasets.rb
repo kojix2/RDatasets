@@ -36,7 +36,9 @@ module RDatasets
   # @return [Daru::DataFrame]
   def load(package_name, dataset_name = nil)
     if dataset_name
-      file_path = filepath(package_name, dataset_name)
+      file_path = get_file_path(package_name, dataset_name)
+      raise "No such file -- #{file_path}" unless File.exist? file_path
+
       dataframe = Daru::DataFrame.from_csv(file_path)
       if original_index_is_sequential? dataframe
         # `dataframe.set_index` is slow
@@ -53,7 +55,7 @@ module RDatasets
   # @param package_name [String, Symbol] :R package name
   # @param dataset_name [String, Symbol] :R dataset name
   # @return [String]
-  def filepath(package_name, dataset_name)
+  def get_file_path(package_name, dataset_name)
     rdata_directory = File.expand_path('../data', __dir__)
     package_name = package_name.to_s if package_name.is_a? Symbol
     dataset_name = dataset_name.to_s if dataset_name.is_a? Symbol
