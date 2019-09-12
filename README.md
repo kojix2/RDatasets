@@ -9,8 +9,6 @@ This ruby gem allows you to access over 1200 datasets included in R from Ruby.
 - All the datasets were ported from [RDatasets](https://github.com/vincentarelbundock/Rdatasets) created by Vincent.
 - This Ruby gem was inspired by [RDatasets.jl](https://github.com/johnmyleswhite/RDatasets.jl) created by John Myles White.
 
-under development
-
 ## Installation
 
 ```bash
@@ -36,7 +34,7 @@ RDatasets.search /diamonds/
 ```
 
 ## Development
-What I do NOT do
+Don't do list
 - Add data other than the CSV file.
 - Add custom useful methods for each data set.
 
@@ -44,6 +42,6 @@ What I do NOT do
 Bug reports and pull requests are welcome on GitHub at https://github.com/kojix2/rdatasets.
 
 ## License
-GPL-3. See the documents below.
+GPL-3. See the documents below for more details.
 - https://github.com/vincentarelbundock/Rdatasets#license
 - https://github.com/johnmyleswhite/RDatasets.jl#licensing-and-intellectual-property
