@@ -20,8 +20,9 @@ RSpec.describe RDatasets do
   end
 
   it 'can search /ing$/' do
-    df = RDatasets.search /ing$/
-    expect(df.size).to eq 33
+    df = RDatasets.search(/ing$/)
+    # 41 was confirmed by MS Excel.
+    expect(df.size).to eq 41
   end
 
   it 'can load datasets vi method chain' do
