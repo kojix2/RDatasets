@@ -1,6 +1,10 @@
 require 'bundler/setup'
 
 require 'simplecov'
+require 'coveralls'
+
+Coveralls.wear!
+
 SimpleCov.start
 
 require 'rdatasets'
