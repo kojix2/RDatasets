@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe RDatasets do
   it 'has a version number' do
     expect(RDatasets::VERSION).not_to be nil
