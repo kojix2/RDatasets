@@ -25,7 +25,7 @@ GEM
     parallel (1.17.0)
     parallel_tests (2.29.2)
       parallel
-    rake (10.5.0)
+    rake (13.0.1)
     rspec (3.8.0)
       rspec-core (~> 3.8.0)
       rspec-expectations (~> 3.8.0)
@@ -56,7 +56,7 @@ DEPENDENCIES
   bundler (~> 2.0)
   coveralls
   parallel_tests
-  rake (~> 10.0)
+  rake (~> 13.0)
   rdatasets!
   rspec (~> 3.0)
   simplecov
