@@ -5,6 +5,7 @@ require 'daru'
 
 # Module for RDatasets
 module RDatasets
+  # R packages.
   class Package
     def initialize(package_name)
       @package_name = package_name
