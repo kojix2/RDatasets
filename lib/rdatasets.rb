@@ -22,8 +22,6 @@ module RDatasets
 
   private_constant :Package
 
-  private
-
   def self.method_missing(package_name)
     return Package.new(package_name) if RDatasets.packages.include? package_name
 
