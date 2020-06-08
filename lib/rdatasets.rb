@@ -19,6 +19,10 @@ module RDatasets
 
       super
     end
+
+    def respond_to_missing?(name, include_private)
+      @datasets.include?(name) ? true : super
+    end
   end
 
   private_constant :Package
@@ -27,6 +31,10 @@ module RDatasets
     return Package.new(package_name) if RDatasets.packages.include? package_name
 
     super
+  end
+
+  def self.respond_to_missing?(package_name, include_private)
+    RDatasets.packages.include?(package_name) ? true : super
   end
 
   module_function
