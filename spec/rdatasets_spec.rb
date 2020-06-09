@@ -44,7 +44,7 @@ RSpec.describe RDatasets do
       expect(RDatasets.respond_to?(package)).to be true
     end
 
-    package_object = RDatasets.send(package)
+    package_object = RDatasets.public_send(package)
 
     it 'dose not respond to the wrong dataset name' do
       expect(package_object.respond_to?(:wrong_dataset_name)).to be false
@@ -70,7 +70,11 @@ RSpec.describe RDatasets do
       end
 
       it "can load the #{package}/#{dataset} dataset with method chain" do
-        expect(RDatasets.send(package.to_sym).send(dataset.to_sym)).to be_an_instance_of Daru::DataFrame
+        # WHY `public_send` ?
+        # `send` can call private methods. 
+        # This cause trouble especially when calling `sleep`.
+        expect(RDatasets.public_send(package.to_sym)
+                        .public_send(dataset.to_sym)).to be_an_instance_of Daru::DataFrame
       end
     end
   end
