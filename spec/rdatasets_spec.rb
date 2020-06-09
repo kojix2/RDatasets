@@ -31,13 +31,13 @@ RSpec.describe RDatasets do
     expect(df1 == df2).to eq true
   end
 
-  it 'dose not respond to the wrong method name' do
+  it 'dose not respond to the wrong package name' do
     expect(RDatasets.respond_to?(:wrong_package_name)).to be false
-    expect(RDatasets.respond_to?(3)).to be false
+    expect { RDatasets.respond_to?(3) }.to raise_error(TypeError)
   end
 
   rdata_directory = File.expand_path('../data', __dir__)
-  Dir.glob(File.join(rdata_directory, '/*')).sort.each do |dirpath|
+  Dir.glob(File.join(rdata_directory, '*/')).sort.each do |dirpath|
     package = File.basename(dirpath)
 
     it "respond to the package name #{package}" do
@@ -48,12 +48,11 @@ RSpec.describe RDatasets do
 
     it 'dose not respond to the wrong dataset name' do
       expect(package_object.respond_to?(:wrong_dataset_name)).to be false
-      expect(package_object.respond_to?(3)).to be false
+      expect { package_object.respond_to?(3) }.to raise_error(TypeError)
     end
 
-    Dir.glob(File.join(dirpath, '/*')).sort.each do |filepath|
+    Dir.glob(File.join(dirpath, '*')).sort.each do |filepath|
       dataset = File.basename(filepath, '.csv')
-
 
       next if dataset == 'friendship'
       next if dataset == 'sna.ex'
@@ -63,15 +62,15 @@ RSpec.describe RDatasets do
       end
 
       it "can load the #{package}/#{dataset} dataset with String" do
-        expect(RDatasets.load(package, dataset).class).to eq Daru::DataFrame
+        expect(RDatasets.load(package, dataset)).to be_an_instance_of Daru::DataFrame
       end
 
       it "can load the #{package}/#{dataset} dataset with Symbol" do
-        expect(RDatasets.load(package.to_sym, dataset.to_sym).class).to eq Daru::DataFrame
+        expect(RDatasets.load(package.to_sym, dataset.to_sym)).to be_an_instance_of Daru::DataFrame
       end
 
       it "can load the #{package}/#{dataset} dataset with method chain" do
-        expect(RDatasets.send(package.to_sym).send(dataset.to_sym).class).to eq Daru::DataFrame
+        expect(RDatasets.send(package.to_sym).send(dataset.to_sym)).to be_an_instance_of Daru::DataFrame
       end
     end
   end
