@@ -54,9 +54,6 @@ RSpec.describe RDatasets do
     Dir.glob(File.join(dirpath, '*')).sort.each do |filepath|
       dataset = File.basename(filepath, '.csv')
 
-      next if dataset == 'friendship'
-      next if dataset == 'sna.ex'
-
       it "respond to the dataset name #{dataset} in #{package}" do
         expect(package_object.respond_to?(dataset)).to be true
       end

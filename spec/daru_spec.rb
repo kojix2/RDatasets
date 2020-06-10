@@ -8,9 +8,6 @@ RSpec.describe Daru::DataFrame do
     Dir.glob(File.join(dirpath, '*')).sort.each do |filepath|
       dataset = File.basename(filepath, '.csv')
 
-      next if dataset == 'friendship'
-      next if dataset == 'sna.ex'
-
       it "can load the #{package}/#{dataset} dataset with String" do
         expect(Daru::DataFrame.from_rdatasets(package, dataset).class).to eq Daru::DataFrame
       end
