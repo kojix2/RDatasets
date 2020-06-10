@@ -68,7 +68,7 @@ RSpec.describe RDatasets do
 
       it "can load the #{package}/#{dataset} dataset with method chain" do
         # WHY `public_send` ?
-        # `send` can call private methods. 
+        # `send` can call private methods.
         # This cause trouble especially when calling `sleep`.
         expect(RDatasets.public_send(package.to_sym)
                         .public_send(dataset.to_sym)).to be_an_instance_of Daru::DataFrame
