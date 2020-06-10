@@ -5,7 +5,7 @@
 RDatasets for Ruby.
 This ruby gem allows you to access over 1200 datasets included in R from Ruby.
 
-- All the datasets were ported from [RDatasets](https://github.com/vincentarelbundock/Rdatasets) created by Vincent.
+- All the datasets were imported from [RDatasets](https://github.com/vincentarelbundock/Rdatasets) created by Vincent.
 - This Ruby gem was inspired by [RDatasets.jl](https://github.com/johnmyleswhite/RDatasets.jl) created by John Myles White.
 
 ## Installation
@@ -33,9 +33,8 @@ RDatasets.search /diamonds/
 ```
 
 ## Development
-Don't do list
-- Add data other than the CSV file.
-- Add custom useful methods for each data set.
+- Do not add data other than the CSV file.
+- Do not add custom useful methods for a specific dataset.
 
 ## Contributing
 Bug reports and pull requests are welcome on GitHub at https://github.com/kojix2/rdatasets.
