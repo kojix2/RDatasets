@@ -8,6 +8,7 @@ module RDatasets
   # R packages.
   class Package
     attr_reader :package_name
+
     def initialize(package_name)
       @package_name = package_name
       @datasets = RDatasets.package package_name
