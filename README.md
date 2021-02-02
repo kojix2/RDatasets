@@ -1,6 +1,6 @@
 # RDatasets
 [![Gem Version](https://badge.fury.io/rb/rdatasets.svg)](https://badge.fury.io/rb/rdatasets)
-[![Build Status](https://travis-ci.org/kojix2/rdatasets.svg?branch=master)](https://travis-ci.org/kojix2/rdatasets)
+[![Build Status](https://github.com/kojix2/RDatasets/workflows/test/badge.svg)](https://github.com/kojix2/RDatasets/actions)
 
 RDatasets for Ruby.
 This ruby gem allows you to access over 1200 datasets included in R from Ruby.
