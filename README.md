@@ -39,6 +39,10 @@ RDatasets.search /diamonds/
 ## Contributing
 Bug reports and pull requests are welcome on GitHub at https://github.com/kojix2/rdatasets.
 
+    Do you need commit rights to my repository?
+    Do you want to get admin rights and take over the project?
+    If so, please feel free to contact me @kojix2.
+
 ## License
 GPL-3. See the documents below for more details.
 - https://github.com/vincentarelbundock/Rdatasets#license
