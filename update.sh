@@ -5,3 +5,4 @@ rm master.zip
 rsync -avr --delete Rdatasets-master/csv/ data/
 cp -f Rdatasets-master/datasets.csv data/datasets.csv
 rm -rf Rdatasets-master
+find data -name *.csv | xargs gzip
