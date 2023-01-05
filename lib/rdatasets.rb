@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 require 'rdatasets/version'
-require 'daru'
+
+require "red_amber"
 
 # Module for RDatasets
 module RDatasets
@@ -44,19 +45,13 @@ module RDatasets
   # Load a certain dataset and returns a dataframe.
   # @param package_name [String, Symbol] :R package name
   # @param dataset_name [String, Symbol] :R dataset name
-  # @return [Daru::DataFrame]
+  # @return [RedAmber::DataFrame]
   def load(package_name, dataset_name = nil)
     if dataset_name
       file_path = get_file_path(package_name, dataset_name)
       raise "No such file -- #{file_path}" unless File.exist? file_path
 
-      dataframe = Daru::DataFrame.from_csv(file_path)
-      if original_index_is_sequential? dataframe
-        # `dataframe.set_index` is slow
-        dataframe.index = dataframe.at 0
-        dataframe.delete_vector dataframe.at(0).name
-      end
-      dataframe
+      dataframe = RedAmber::DataFrame.load(file_path)
     else
       package(package_name)
     end
@@ -74,15 +69,15 @@ module RDatasets
     # "car" package directory is a symbolic link.
     # Do not use Symbolic links because they can cause error on Windows.
     package_name = 'carData' if package_name == 'car'
-    dataset_name += '.csv'
+    dataset_name += '.csv.gz'
     File.join(rdata_directory, package_name, dataset_name)
   end
 
   # Display information of all data sets.
-  # @return [Daru::DataFrame]
+  # @return [RedAmber::DataFrame]
   def df
-    file_path = File.expand_path('../data/datasets.csv', __dir__)
-    Daru::DataFrame.from_csv(file_path)
+    file_path = File.expand_path('../data/datasets.csv.gz', __dir__)
+    RedAmber::DataFrame.load(file_path)
   end
 
   # Show a list of all packages.
@@ -102,27 +97,21 @@ module RDatasets
   # Search available datasets. (items and titles)
   # If the argument is a string, ignore case.
   # @param pattern [String, Regexp] :The pattern to search for
-  # @return [Daru::DataFrame]
+  # @return [RedAmber::DataFrame]
   def search(pattern)
     pattern = /#{pattern}/i if pattern.is_a? String
     df.filter(:row) do |row|
       row['Item'] =~ pattern || row['Title'] =~ pattern
     end
   end
-
-  # Check if the index of original r dataset is sequential.
-  def original_index_is_sequential?(dataframe)
-    dataframe.at(0).to_a == [*1..dataframe.size]
-  end
-  private_class_method :original_index_is_sequential?
 end
 
-module Daru
+module RedAmber
   class DataFrame
     # Read a certain dataset from the Rdatasets and returns a dataframe.
     # @param package_name [String, Symbol] :R package name
     # @param dataset_name [String, Symbol] :R dataset name
-    # @return [Daru::DataFrame]
+    # @return [RedAmber::DataFrame]
     def self.from_rdatasets(package_name, dataset_name)
       RDatasets.load(package_name, dataset_name)
     end

@@ -7,7 +7,7 @@ require 'simplecov'
 SimpleCov.start
 
 require 'rdatasets'
-require 'daru'
+require 'red_amber'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

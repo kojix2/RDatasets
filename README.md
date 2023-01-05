@@ -18,11 +18,11 @@ gem install rdatasets
 
 ```ruby
 require 'rdatasets'
-df = Daru::DataFrame.from_rdatasets("datasets","iris")
+df = RedAmber::DataFrame.from_rdatasets("datasets","iris")
 df = RDatasets.load "datasets", "iris"
 df = RDatasets.load :datasets, :iris
 df = RDatasets.datasets.iris
-# returns Daru::DataFrame
+# returns RedAmber::DataFrame
 
 # available datasets
 df = RDatasets.df

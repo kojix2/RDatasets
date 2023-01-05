@@ -6,7 +6,7 @@ RSpec.describe RDatasets do
   end
 
   it 'show a list of packages' do
-    expect(RDatasets.df.class).to eq Daru::DataFrame
+    expect(RDatasets.df.class).to eq RedAmber::DataFrame
   end
 
   it 'can set index' do
@@ -52,7 +52,7 @@ RSpec.describe RDatasets do
     end
 
     Dir.glob(File.join(dirpath, '*')).sort.each do |filepath|
-      dataset = File.basename(filepath, '.csv')
+      dataset = File.basename(filepath, '.csv.gz')
 
       # https://github.com/vincentarelbundock/Rdatasets/issues/8
       # https://github.com/allisonhorst/palmerpenguins/issues/80
@@ -63,11 +63,11 @@ RSpec.describe RDatasets do
       end
 
       it "can load the #{package}/#{dataset} dataset with String" do
-        expect(RDatasets.load(package, dataset)).to be_an_instance_of Daru::DataFrame
+        expect(RDatasets.load(package, dataset)).to be_an_instance_of RedAmber::DataFrame
       end
 
       it "can load the #{package}/#{dataset} dataset with Symbol" do
-        expect(RDatasets.load(package.to_sym, dataset.to_sym)).to be_an_instance_of Daru::DataFrame
+        expect(RDatasets.load(package.to_sym, dataset.to_sym)).to be_an_instance_of RedAmber::DataFrame
       end
 
       it "can load the #{package}/#{dataset} dataset with method chain" do
@@ -75,7 +75,7 @@ RSpec.describe RDatasets do
         # `send` can call private methods.
         # This cause trouble especially when calling `sleep`.
         expect(RDatasets.public_send(package.to_sym)
-                        .public_send(dataset.to_sym)).to be_an_instance_of Daru::DataFrame
+                        .public_send(dataset.to_sym)).to be_an_instance_of RedAmber::DataFrame
       end
     end
   end
