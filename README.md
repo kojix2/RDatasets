@@ -1,3 +1,5 @@
+## Moved to https://github.com/kojix2/RDatasets2
+
 # RDatasets
 [![Gem Version](https://badge.fury.io/rb/rdatasets.svg)](https://badge.fury.io/rb/rdatasets)
 [![Build Status](https://github.com/kojix2/RDatasets/workflows/test/badge.svg)](https://github.com/kojix2/RDatasets/actions)
